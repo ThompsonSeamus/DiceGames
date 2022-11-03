@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DiceGames</string>
+    <string name="roll_num_hint">Number of Sides</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="roll_data">Roll Data</string>
+    <string name="roll_exclamation">Roll!</string>
 </resources>
