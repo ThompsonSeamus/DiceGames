@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +24,9 @@ public class RollData extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private int cheatPercent;
+    private int rollNum;
+    private EditText rollNum;
     public RollData() {
         // Required empty public constructor
     }
@@ -59,6 +62,7 @@ public class RollData extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_roll_data, container, false);
+        return inflater.inflate(R.layout.fragment_roll_data, container, true);
     }
+    /rollNum = new EditText;
 }

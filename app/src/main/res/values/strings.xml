@@ -5,4 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="roll_data">Roll Data</string>
     <string name="roll_exclamation">Roll!</string>
+    <string name="cheat_questionmark">Cheat?</string>
+    <string name="rolling">Rolling!</string>
+    <string name="back">Back</string>
 </resources>
