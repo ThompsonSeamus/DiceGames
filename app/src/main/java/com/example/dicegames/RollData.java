@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class RollData extends Fragment {
     private String mParam2;
     private int cheatPercent;
     private int rollNum;
-    private EditText rollNum;
+    private EditText rollNumET;
     public RollData() {
         // Required empty public constructor
     }
@@ -56,6 +57,7 @@ public class RollData extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        rollNumET = rollNumET.findViewById(R.id.editTextNumber);
     }
 
     @Override
@@ -64,5 +66,4 @@ public class RollData extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_roll_data, container, true);
     }
-    /rollNum = new EditText;
 }
