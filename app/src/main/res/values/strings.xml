@@ -8,4 +8,8 @@
     <string name="cheat_questionmark">Cheat?</string>
     <string name="rolling">Rolling!</string>
     <string name="back">Back</string>
+    <string name="_20">20</string>
+    <string name="Welcome">Welcome Traveler</string>
+    <string name="to_making_the_die">Let\'s Make the Die</string>
+    <string name="welcome_paragraph">Here you are free to make your own die, and perhaps cheat the system.</string>
 </resources>
