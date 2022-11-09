@@ -21,4 +21,13 @@
         <item name="fontFamily">@font/fondamento</item>
     </style>
 
+    <style name="Theme.DiceGames.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.DiceGames.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.DiceGames.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
