@@ -36,7 +36,6 @@
         android:id="@+id/to_rolling_button"
         android:layout_width="116dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="84dp"
         android:text="@string/roll_exclamation"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +43,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cheatBar"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.66" />
 
     <SeekBar
         android:id="@+id/cheatBar"
@@ -56,6 +55,42 @@
         android:progress="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+    <TextView
+        android:id="@+id/zero_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/_0"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/cheatBar"
+        app:layout_constraintEnd_toStartOf="@+id/to_rolling_button"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ninetynine_percent"
+        android:layout_width="57dp"
+        android:layout_height="28dp"
+        android:text="@string/_99"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/zero_percent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="@+id/zero_percent"
+        app:layout_constraintTop_toTopOf="@+id/zero_percent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/cheat_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cheat"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cheatBar"
+        app:layout_constraintEnd_toStartOf="@+id/ninetynine_percent"
+        app:layout_constraintStart_toEndOf="@+id/zero_percent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
