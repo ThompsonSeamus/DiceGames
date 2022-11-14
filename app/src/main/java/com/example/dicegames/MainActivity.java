@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MediaController;
+import android.widget.SeekBar;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private int sides, cheat;
     private EditText sidesEditText;
+    private Button toRollingActivityButton;
+    private SeekBar cheatBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +29,17 @@ public class MainActivity extends AppCompatActivity {
         sidesEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sides = Integer.parseInt(sidesEditText.getText().toString());
+                try {
+                    sides = Integer.parseInt(sidesEditText.getText().toString());
+                }
+                catch(NumberFormatException e){
+                    Toast.makeText(MainActivity.this, "NumberFormatException: Sides has been set to 6", Toast.LENGTH_SHORT).show();
+                    sides = 6;
+                }
             }
         });
 
-        Button toRollingActivityButton = findViewById(R.id.to_rolling_button);
+        toRollingActivityButton = findViewById(R.id.to_rolling_button);
         toRollingActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -8,19 +8,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.Toast;
 
 import kotlin.jvm.internal.Ref;
 
 public class RollingDice extends Activity {
     private MediaController mediaController;
     private MediaPlayer no, rockAndRoll;
-    private int sides, cheat;
+    private Button toRollingDataButton, rollButton;
+    private int sides, cheat, rolledNum;
+    private Die die;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roll);
 
+        //media player
         no = MediaPlayer.create(this, R.raw.nooooo);
         rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);
 
@@ -28,8 +32,18 @@ public class RollingDice extends Activity {
         Intent fromRollDataIntent = getIntent();
         sides = fromRollDataIntent.getIntExtra("sides", sides);
         cheat = fromRollDataIntent.getIntExtra("cheat", cheat);
+        //making a die
+        try{die = new Die(sides, cheat);}
+        catch(NumberFormatException e){
+            Toast.makeText(this, "Die Couldn't Be Initialized With Given Parameters", Toast.LENGTH_SHORT).show();
+            die = new Die();
+        }
 
-        Button toRollingDataButton = findViewById(R.id.to_rolling_data_button);
+        //buttons
+        toRollingDataButton = findViewById(R.id.to_rolling_data_button);
+        rollButton = findViewById(R.id.roll_button);
+
+        //button listeners
         toRollingDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,6 +51,15 @@ public class RollingDice extends Activity {
             }
         });
 
+        rollButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                rockAndRoll.start();
+                String rolledNum = String.valueOf(die.roll());
+                rollButton.setText(rolledNum);
+                Toast.makeText(RollingDice.this, "You Rolled the Die", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

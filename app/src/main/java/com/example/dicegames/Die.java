@@ -16,6 +16,7 @@ public class Die {
         this.cheating = cheating;
     }
 
+    //methods
     public int roll(){
         //the number
         int cheatRolledNum = (int)(Math.random()*101);
