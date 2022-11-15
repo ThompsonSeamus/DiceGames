@@ -24,4 +24,7 @@
     <string name="_0">0%</string>
     <string name="_99">99%</string>
     <string name="cheat">Cheat%</string>
+    <string name="negative1">-1</string>
+    <string name="press_me">Press Me</string>
+    <string name="roll">Roll</string>
 </resources>

@@ -28,39 +28,42 @@ public class RollingDice extends Activity {
         no = MediaPlayer.create(this, R.raw.nooooo);
         rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);
 
+        //buttons
+        toRollingDataButton = findViewById(R.id.to_rolling_data_button);
+        rollButton = findViewById(R.id.roll_button);
+
         //intent from the roll data
         Intent fromRollDataIntent = getIntent();
         sides = fromRollDataIntent.getIntExtra("sides", sides);
         cheat = fromRollDataIntent.getIntExtra("cheat", cheat);
+
         //making a die
-        try{die = new Die(sides, cheat);}
-        catch(NumberFormatException e){
+        try {
+            die = new Die(sides, cheat);
+        } catch (NumberFormatException e) {
             Toast.makeText(this, "Die Couldn't Be Initialized With Given Parameters", Toast.LENGTH_SHORT).show();
             die = new Die();
         }
-
-        //buttons
-        toRollingDataButton = findViewById(R.id.to_rolling_data_button);
-        rollButton = findViewById(R.id.roll_button);
 
         //button listeners
         toRollingDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sides = 0;
+                cheat = 0;
+                die = null;
                 finish();
             }
         });
 
-        rollButton.setOnClickListener(new View.OnClickListener(){
+        rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 rockAndRoll.start();
                 String rolledNum = String.valueOf(die.roll());
                 rollButton.setText(rolledNum);
-                Toast.makeText(RollingDice.this, "You Rolled the Die", Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 }

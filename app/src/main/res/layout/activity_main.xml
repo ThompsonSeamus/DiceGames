@@ -25,6 +25,7 @@
         android:layout_marginTop="120dp"
         android:ems="10"
         android:hint="@string/roll_num_hint"
+        android:imeOptions="actionDone"
         android:inputType="number"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,11 +43,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cheatBar"
+        app:layout_constraintTop_toBottomOf="@+id/cheat_bar"
         app:layout_constraintVertical_bias="0.66" />
 
     <SeekBar
-        android:id="@+id/cheatBar"
+        android:id="@+id/cheat_bar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="295dp"
         android:layout_height="38dp"
@@ -64,7 +65,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/_0"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/cheatBar"
+        app:layout_constraintBottom_toTopOf="@+id/cheat_bar"
         app:layout_constraintEnd_toStartOf="@+id/to_rolling_button"
         app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent" />
@@ -88,7 +89,7 @@
         android:layout_height="wrap_content"
         android:text="@string/cheat"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/cheatBar"
+        app:layout_constraintBottom_toTopOf="@+id/cheat_bar"
         app:layout_constraintEnd_toStartOf="@+id/ninetynine_percent"
         app:layout_constraintStart_toEndOf="@+id/zero_percent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
