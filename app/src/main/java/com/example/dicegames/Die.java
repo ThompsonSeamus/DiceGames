@@ -23,7 +23,8 @@ public class Die {
         if(cheatRolledNum <= cheating){
             return sides;
         }
-        return (int)(Math.random()*sides) + 1;
+
+        return (int)(Math.random()*sides - 1) + 1;
     }
 
     //setters

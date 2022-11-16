@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     private EditText sidesEditText;
     private SeekBar cheatBar;
 
-    //on Create/Main method
+    //on Create||Main method
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,20 +34,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         cheatBar = (SeekBar) findViewById(R.id.cheat_bar);
 
         //on click listeners
-        sidesEditText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    sides = Integer.parseInt(sidesEditText.getText().toString());
-                }
-                catch(NumberFormatException e){
-                    Toast.makeText(MainActivity.this, "NumberFormatException: Sides has been set to 6", Toast.LENGTH_SHORT).show();
-                    sides = 6;
-                }
-            }
-        });
-        sidesEditText.setOnEditorActionListener(new DoneOnEditorActionListener());
-
+        sidesEditText.setOnEditorActionListener(new DoneOnEditorActionListener());//private class for soft Keyboard
         cheatBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -67,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
             }
         });
 
+        //switch activities button
         Button toRollingActivityButton = findViewById(R.id.to_rolling_button);
         toRollingActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,12 +66,20 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
 
     //passing a JSON to get an object
     public void switchActivity(){
+        try {
+            sides = Integer.parseInt(sidesEditText.getText().toString());
+        }
+        catch(NumberFormatException e){
+            Toast.makeText(MainActivity.this, "NumberFormatException: Sides has been set to 6", Toast.LENGTH_SHORT).show();
+            sides = 6;
+        }
         Intent rollIntent = new Intent(this, RollingDice.class);
         rollIntent.putExtra("sides", sides);
         rollIntent.putExtra("cheat", cheat);
         startActivity(rollIntent);
     }
 
+    //necessary override forDoneOnEditorActionListener private class
     @Override
     public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
         return false;
@@ -98,6 +94,13 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                try {
+                    sides = Integer.parseInt(sidesEditText.getText().toString());
+                }
+                catch(NumberFormatException e){
+                    Toast.makeText(MainActivity.this, "NumberFormatException: Sides has been set to 6", Toast.LENGTH_SHORT).show();
+                    sides = 6;
+                }
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 return true;
             }
