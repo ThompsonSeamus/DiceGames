@@ -19,12 +19,18 @@ public class Die {
     //methods
     public int roll(){
         //the number
-            int cheatRolledNum = (int)(Math.random()*101);
-            if(cheatRolledNum <= cheating){
+        if(cheating != 0){
+            int cheatRolledNum = (int) (Math.random() * 101);
+            if (cheatRolledNum <= cheating) {
                 return sides;
             }
-
-            return (int)(Math.random()*sides - 1) + 1;
+            else{
+                return (int) (Math.random() * sides - 1) + 1;
+            }
+        }
+        else{
+            return (int) (Math.random() * sides) + 1;
+        }
     }
 
     //setters
