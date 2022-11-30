@@ -3,6 +3,8 @@ package com.example.dicegames;
 import android.content.Context;
 import android.app.Activity;
 import android.content.Intent;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,9 @@ public class RollingDice extends Activity {
     private Button toRollingDataButton, rollButton;
     private int sides, cheat, rolledNum;
     private Die die;
+    //private SensorEvent shakeSensor;
+    //private SensorManager sensorManager;
+    private static final int TYPE_LINEAR_ACCELERATION = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,9 @@ public class RollingDice extends Activity {
         //media player
         no = MediaPlayer.create(this, R.raw.nooooo);
         rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);
+
+        //Shake Sensor
+
 
         //buttons
         toRollingDataButton = findViewById(R.id.to_rolling_data_button);
