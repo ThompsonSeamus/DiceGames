@@ -3,7 +3,9 @@ package com.example.dicegames;
 import android.content.Context;
 import android.app.Activity;
 import android.content.Intent;
+import android.hardware.Sensor;
 import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -14,13 +16,13 @@ import android.widget.Toast;
 
 import kotlin.jvm.internal.Ref;
 
-public class RollingDice extends Activity {
+public class RollingDice extends Activity implements SensorEventListener {
     private MediaController mediaController;
     private MediaPlayer no, rockAndRoll;
     private Button toRollingDataButton, rollButton;
     private int sides, cheat, rolledNum;
     private Die die;
-    private SensorEvent shakeSensor;
+    private Sensor shakeSensor;
     private SensorManager sensorManager;
     private static final int TYPE_LINEAR_ACCELERATION = 10;
 
@@ -34,7 +36,8 @@ public class RollingDice extends Activity {
         rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);
 
         //Shake Sensor
-
+        sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        shakeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         //buttons
         toRollingDataButton = findViewById(R.id.to_rolling_data_button);
@@ -72,6 +75,17 @@ public class RollingDice extends Activity {
                 rollButton.setText(rolledNum);
             }
         });
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        rockAndRoll.start();
+        String rolledNum = String.valueOf(die.roll());
+        rollButton.setText(rolledNum);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
 }
