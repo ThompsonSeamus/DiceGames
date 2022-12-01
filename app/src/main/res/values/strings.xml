@@ -28,4 +28,7 @@
     <string name="press_me">Press Me</string>
     <string name="roll">Roll</string>
     <string name="hidden">Hidden</string>
+    <string name="hide">hide</string>
+    <string name="dice_image_text">image of dice</string>
+    <string name="empty_string" />
 </resources>

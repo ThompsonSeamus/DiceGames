@@ -20,8 +20,6 @@ public class RollingDice extends Activity {
     private Button toRollingDataButton, rollButton;
     private int sides, cheat, rolledNum;
     private Die die;
-    //private SensorEvent shakeSensor;
-    //private SensorManager sensorManager;
     private static final int TYPE_LINEAR_ACCELERATION = 10;
 
     @Override
@@ -32,9 +30,6 @@ public class RollingDice extends Activity {
         //media player
         no = MediaPlayer.create(this, R.raw.nooooo);
         rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);
-
-        //Shake Sensor
-
 
         //buttons
         toRollingDataButton = findViewById(R.id.to_rolling_data_button);
