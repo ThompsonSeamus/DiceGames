@@ -27,12 +27,13 @@ public class RollingDice extends Activity {
     //shake sensors
     private SensorManager sensorManager;
     private SensorEventListener sensorEventListener;
+
     //shake sensor variables
-    //doubles
+        //floats
     private float prevXAcc;
     private float prevYAcc;
     private float prevZAcc;
-    //booleans
+        //booleans
     private boolean firstTime = true;
     private boolean shaking = false;
     private boolean atRest = true;
@@ -75,7 +76,7 @@ public class RollingDice extends Activity {
         toRollingDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sides = 0;
+                sides = 2;
                 cheat = 0;
                 die = null;
                 finish();
@@ -132,7 +133,7 @@ public class RollingDice extends Activity {
                     shaking = true;
                     atRest = false;
                 }
-            } else if (deltaXAcc == 0 && deltaYAcc == 0 && deltaZAcc == 0) {
+            } else if (deltaXAcc <= .5 && deltaYAcc <= .5 && deltaZAcc <= .5) {
                 if (atRest && shaking) {
                     shaking = false;
                 }

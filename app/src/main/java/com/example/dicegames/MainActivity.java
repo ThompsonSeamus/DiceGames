@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
                 switchActivity();
             }
         });
+
+        //set pre-made dice buttons
+
     }
 
     //button to hide cheat bar
@@ -149,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
             d6d.setVisibility(View.VISIBLE);
             d8c.setVisibility(View.VISIBLE);
         }
-
     }
 
     //switching activities
@@ -167,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         startActivity(rollIntent);
     }
 
-    //necessary override forDoneOnEditorActionListener private class
+    //(DONE BUTTON WORKING) necessary override forDoneOnEditorActionListener private class
     @Override
     public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
         return false;
