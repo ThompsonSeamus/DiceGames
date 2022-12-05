@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,31 +35,31 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         setContentView(R.layout.activity_main);
 
         //initializing data getters
-        sidesEditText = (EditText) findViewById(R.id.editTextNumber);
-        cheatBar = (SeekBar) findViewById(R.id.cheat_bar);
+        sidesEditText = findViewById(R.id.editTextNumber);
+        cheatBar =  findViewById(R.id.cheat_bar);
         cheatBar.setVisibility(View.INVISIBLE);
 
         //initializing the hidden/viewed cheat bar items
-        diceImage = (ImageView) findViewById(R.id.imageView);
+        diceImage = findViewById(R.id.imageView);
         diceImage.setVisibility(View.VISIBLE);
-        ninetyNine = (TextView) findViewById(R.id.ninetynine_percent);
+        ninetyNine = findViewById(R.id.ninetynine_percent);
         ninetyNine.setVisibility(View.INVISIBLE);
-        zero = (TextView) findViewById(R.id.zero_percent);
+        zero = findViewById(R.id.zero_percent);
         zero.setVisibility(View.INVISIBLE);
-        cheatPercentText = (TextView) findViewById(R.id.cheat_percent);
+        cheatPercentText = findViewById(R.id.cheat_percent);
         cheatPercentText.setVisibility(View.INVISIBLE);
 
         //adding the creation dice buttons
-        d12 = (Button) findViewById(R.id.d_12_die_button);
-        d10p = (Button) findViewById(R.id.d_10_die_button_percentile);
-        d20l = (Button) findViewById(R.id.d_20_die_button_long);
-        d8 = (Button) findViewById(R.id.d_8_die_button);
-        d10 = (Button) findViewById(R.id.d_10_die_button);
-        d20 = (Button) findViewById(R.id.d_20_die_button);
-        d4 = (Button) findViewById(R.id.d_4_die_button);
-        d6n = (Button) findViewById(R.id.d_6_die_button_nums);
-        d6d = (Button) findViewById(R.id.d_6_die_button_dots);
-        d8c = (Button) findViewById(R.id.d_8_die_button_closer);
+        d12 = findViewById(R.id.d_12_die_button);
+        d10p = findViewById(R.id.d_10_die_button_percentile);
+        d20l = findViewById(R.id.d_20_die_button_long);
+        d8 = findViewById(R.id.d_8_die_button);
+        d10 = findViewById(R.id.d_10_die_button);
+        d20 = findViewById(R.id.d_20_die_button);
+        d4 = findViewById(R.id.d_4_die_button);
+        d6n = findViewById(R.id.d_6_die_button_nums);
+        d6d = findViewById(R.id.d_6_die_button_dots);
+        d8c = findViewById(R.id.d_8_die_button_closer);
 
         //setting All dice buttons to VISIBLE
         d12.setVisibility(View.VISIBLE);
@@ -99,15 +97,89 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
 
         //switch activities button
         Button toRollingActivityButton = findViewById(R.id.to_rolling_button);
-        toRollingActivityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivity();
-            }
-        });
+        toRollingActivityButton.setOnClickListener(view -> switchActivity());
 
         //set pre-made dice buttons
-
+            //d12
+        d12.setOnClickListener(view -> {
+            sides = 12;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 0;}
+            switchActivity();
+        });
+            //d10p
+        d10p.setOnClickListener(view -> {
+            sides = 10;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 10;}
+            switchActivity();
+        });
+            //d20l
+        d20l.setOnClickListener(view -> {
+            sides = 20;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 10;}
+            switchActivity();
+        });
+            //d8
+        d8.setOnClickListener(view -> {
+            sides = 8;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 0;}
+            switchActivity();
+        });
+            //d10
+        d10.setOnClickListener(view -> {
+            sides = 10;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 0;}
+            switchActivity();
+        });
+            //d20
+        d20.setOnClickListener(view -> {
+            sides = 20;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 0;}
+            switchActivity();
+        });
+            //d4
+        d4.setOnClickListener(view -> {
+            sides = 4;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 0;}
+            switchActivity();
+        });
+            //d6n
+        d6n.setOnClickListener(view -> {
+            sides = 6;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 0;}
+            switchActivity();
+        });
+            //d6d
+        d6d.setOnClickListener(view -> {
+            sides = 6;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 10;}
+            switchActivity();
+        });
+            //d8c
+        d8c.setOnClickListener(view -> {
+            sides = 8;
+            if(cheatBar.getProgress() == 10){cheat = 99;}
+            else if (cheatBar.getProgress() > 0){cheat = cheatBar.getProgress() * 10;}
+            else{cheat = 10;}
+            switchActivity();
+        });
     }
 
     //button to hide cheat bar
@@ -156,10 +228,10 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
 
     //switching activities
     public void switchActivity(){
-        try {
+        if(sidesEditText.getText() != null){
             sides = Integer.parseInt(sidesEditText.getText().toString());
         }
-        catch(NumberFormatException e){
+        else if(sides == null){
             Toast.makeText(MainActivity.this, "NumberFormatException: Sides has been set to 6", Toast.LENGTH_SHORT).show();
             sides = 6;
         }
@@ -168,6 +240,8 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         rollIntent.putExtra("cheat", cheat);
         startActivity(rollIntent);
     }
+
+
 
     //(DONE BUTTON WORKING) necessary override forDoneOnEditorActionListener private class
     @Override

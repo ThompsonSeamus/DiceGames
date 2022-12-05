@@ -1,6 +1,5 @@
 package com.example.dicegames;
 
-import android.content.Context;
 import android.app.Activity;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -9,18 +8,13 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.MediaController;
 import android.widget.Toast;
 
-import kotlin.jvm.internal.Ref;
-
 public class RollingDice extends Activity {
-    private MediaController mediaController;
-    private MediaPlayer no, rockAndRoll;
+    private MediaPlayer rockAndRoll;
 
-    private Button toRollingDataButton, rollButton;
+    private Button rollButton;
     private int sides, cheat;
     private Die die;
 
@@ -38,19 +32,17 @@ public class RollingDice extends Activity {
     private boolean shaking = false;
     private boolean atRest = true;
 
-    private static final int TYPE_LINEAR_ACCELERATION = 10;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roll);
 
         //media player
-        no = MediaPlayer.create(this, R.raw.nooooo);
+        MediaPlayer.create(this, R.raw.nooooo);
         rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);
 
         //buttons
-        toRollingDataButton = findViewById(R.id.to_rolling_data_button);
+        Button toRollingDataButton = findViewById(R.id.to_rolling_data_button);
         rollButton = findViewById(R.id.roll_button);
 
         //intent from the roll data
@@ -73,23 +65,17 @@ public class RollingDice extends Activity {
         }
 
         //button listeners
-        toRollingDataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sides = 2;
-                cheat = 0;
-                die = null;
-                finish();
-            }
+        toRollingDataButton.setOnClickListener(view -> {
+            sides = 2;
+            cheat = 0;
+            die = null;
+            finish();
         });
 
-        rollButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rockAndRoll.start();
-                String rolledNum = String.valueOf(die.roll());
-                rollButton.setText(rolledNum);
-            }
+        rollButton.setOnClickListener(view -> {
+            rockAndRoll.start();
+            String rolledNum = String.valueOf(die.roll());
+            rollButton.setText(rolledNum);
         });
     }
 
