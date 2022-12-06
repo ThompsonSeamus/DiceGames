@@ -66,9 +66,6 @@ public class RollingDice extends Activity {
 
         //button listeners
         toRollingDataButton.setOnClickListener(view -> {
-            sides = 2;
-            cheat = 0;
-            die = null;
             finish();
         });
 

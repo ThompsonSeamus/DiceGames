@@ -228,17 +228,30 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
 
     //switching activities
     public void switchActivity(){
-        if(sidesEditText.getText() != null){
-            sides = Integer.parseInt(sidesEditText.getText().toString());
-        }
-        else if(sides == null){
+        try{
+            if(sides <=0){
+                try{
+                    sides = Integer.parseInt(sidesEditText.getText().toString());
+                }catch(NumberFormatException e){
+                    Toast.makeText(MainActivity.this, "NumberFormatException: Sides has been set to 6", Toast.LENGTH_SHORT).show();
+                    sides = 6;
+                    cheat = 0;
+                }
+            }
+        }catch(NumberFormatException e){
             Toast.makeText(MainActivity.this, "NumberFormatException: Sides has been set to 6", Toast.LENGTH_SHORT).show();
             sides = 6;
+            cheat = 0;
+        }catch(Exception e){
+            Toast.makeText(MainActivity.this, "OtherException: Sides has been set to 6", Toast.LENGTH_SHORT).show();
+            sides = 6;
+            cheat = 0;
         }
         Intent rollIntent = new Intent(this, RollingDice.class);
         rollIntent.putExtra("sides", sides);
         rollIntent.putExtra("cheat", cheat);
         startActivity(rollIntent);
+        sides = 0;
     }
 
 

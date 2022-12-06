@@ -7,52 +7,221 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/roll_data"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="354dp"
-        android:layout_height="174dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="363dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="72dp"
+        android:contentDescription="@string/dice_image_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/dice_image_wo_watermark" />
 
     <Button
+        android:id="@+id/d_20_die_button"
+        android:layout_width="51dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toStartOf="@+id/d_12_die_button"
+        app:layout_constraintTop_toBottomOf="@+id/d_12_die_button"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/d_6_die_button_dots"
+        android:layout_width="48dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toEndOf="@+id/d_6_die_button_nums"
+        app:layout_constraintTop_toTopOf="@+id/d_6_die_button_nums"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/d_8_die_button_closer"
+        android:layout_width="55dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="56dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toStartOf="@+id/d_6_die_button_dots"
+        app:layout_constraintTop_toTopOf="@+id/d_6_die_button_dots"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/d_12_die_button"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginBottom="116dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/zero_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/_0"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/cheat_bar"
+        app:layout_constraintEnd_toStartOf="@+id/to_rolling_button"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/cheat_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cheat"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cheat_bar"
+        app:layout_constraintEnd_toStartOf="@+id/ninetynine_percent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toEndOf="@+id/zero_percent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
+        app:layout_constraintVertical_bias="0.772" />
+
+    <SeekBar
+        android:id="@+id/cheat_bar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="364dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="56dp"
+        android:max="10"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+    <Button
+        android:id="@+id/d_10_die_button"
+        android:layout_width="56dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toEndOf="@+id/d_12_die_button"
+        app:layout_constraintTop_toTopOf="@+id/d_8_die_button"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/d_4_die_button"
+        android:layout_width="51dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toEndOf="@+id/d_20_die_button"
+        app:layout_constraintTop_toTopOf="@+id/d_20_die_button"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/d_20_die_button_long"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="64dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toEndOf="@+id/d_12_die_button"
+        app:layout_constraintTop_toTopOf="@+id/d_10_die_button_percentile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/d_10_die_button_percentile"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toStartOf="@+id/d_12_die_button"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/d_8_die_button"
+        android:layout_width="50dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toStartOf="@+id/cheat_percent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/d_6_die_button_nums"
+        android:layout_width="51dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty_string"
+        app:layout_constraintStart_toEndOf="@+id/d_20_die_button"
+        app:layout_constraintTop_toTopOf="@+id/d_4_die_button"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/ninetynine_percent"
+        android:layout_width="57dp"
+        android:layout_height="28dp"
+        android:text="@string/_99"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/zero_percent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toStartOf="@+id/zero_percent"
+        app:layout_constraintTop_toTopOf="@+id/zero_percent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
         android:id="@+id/hidden_bar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="16dp"
         android:onClick="hideOrViewCheatBar"
         android:text="@string/hide"
         app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
         app:layout_constraintEnd_toStartOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:layout_marginTop="16dp"
-        android:text="@string/roll_data"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/editTextNumber"
-        android:layout_width="344dp"
-        android:layout_height="116dp"
+        android:layout_width="392dp"
+        android:layout_height="75dp"
         android:layout_marginTop="4dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/roll_num_hint"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -68,56 +237,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.437" />
-
-    <SeekBar
-        android:id="@+id/cheat_bar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="364dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="52dp"
-        android:max="10"
-        android:progress="0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.286"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
-
-    <TextView
-        android:id="@+id/zero_percent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/_0"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/cheat_bar"
-        app:layout_constraintEnd_toStartOf="@+id/to_rolling_button"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/ninetynine_percent"
-        android:layout_width="57dp"
-        android:layout_height="28dp"
-        android:text="@string/_99"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/zero_percent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
-        app:layout_constraintStart_toStartOf="@+id/zero_percent"
-        app:layout_constraintTop_toTopOf="@+id/zero_percent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/cheat_percent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cheat"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/cheat_bar"
-        app:layout_constraintEnd_toStartOf="@+id/ninetynine_percent"
-        app:layout_constraintHorizontal_bias="0.546"
-        app:layout_constraintStart_toEndOf="@+id/zero_percent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
-        app:layout_constraintVertical_bias="0.473" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
