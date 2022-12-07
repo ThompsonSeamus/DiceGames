@@ -1,5 +1,7 @@
 package com.example.dicegames;
 
+import android.media.MediaPlayer;
+
 public class Die {
 
     private int sides;

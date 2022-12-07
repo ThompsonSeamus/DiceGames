@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class RollingDice extends Activity {
-    private MediaPlayer rockAndRoll;
 
+    //needed for the die
     private Button rollButton;
     private int sides, cheat;
     private Die die;
@@ -36,10 +36,6 @@ public class RollingDice extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roll);
-
-        //media player
-        MediaPlayer.create(this, R.raw.nooooo);
-        rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);
 
         //buttons
         Button toRollingDataButton = findViewById(R.id.to_rolling_data_button);
@@ -70,7 +66,6 @@ public class RollingDice extends Activity {
         });
 
         rollButton.setOnClickListener(view -> {
-            rockAndRoll.start();
             String rolledNum = String.valueOf(die.roll());
             rollButton.setText(rolledNum);
         });
@@ -110,7 +105,6 @@ public class RollingDice extends Activity {
 
             if (deltaXAcc > SHAKE_THRESHOLD || deltaYAcc > SHAKE_THRESHOLD || deltaZAcc > SHAKE_THRESHOLD) {
                 if (!shaking) {
-                    rockAndRoll.start();
                     String rolledNum = String.valueOf(die.roll());
                     rollButton.setText(rolledNum);
                     shaking = true;
