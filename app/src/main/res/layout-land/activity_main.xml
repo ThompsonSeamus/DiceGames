@@ -32,13 +32,13 @@
 
     <Button
         android:id="@+id/d_20_die_button"
-        android:layout_width="51dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="54dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/empty_string"
-        app:layout_constraintStart_toStartOf="@+id/d_12_die_button"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/d_12_die_button"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -47,7 +47,6 @@
         android:layout_width="48dp"
         android:layout_height="63dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/empty_string"
         app:layout_constraintStart_toEndOf="@+id/d_6_die_button_nums"
@@ -140,8 +139,8 @@
 
     <Button
         android:id="@+id/d_20_die_button_long"
-        android:layout_width="59dp"
-        android:layout_height="57dp"
+        android:layout_width="48dp"
+        android:layout_height="56dp"
         android:layout_marginStart="64dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/empty_string"
@@ -151,8 +150,8 @@
 
     <Button
         android:id="@+id/d_10_die_button_percentile"
-        android:layout_width="55dp"
-        android:layout_height="50dp"
+        android:layout_width="58dp"
+        android:layout_height="49dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="12dp"
         android:background="@android:color/transparent"
@@ -175,10 +174,9 @@
 
     <Button
         android:id="@+id/d_6_die_button_nums"
-        android:layout_width="51dp"
-        android:layout_height="61dp"
+        android:layout_width="56dp"
+        android:layout_height="64dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/empty_string"
         app:layout_constraintStart_toEndOf="@+id/d_20_die_button"
