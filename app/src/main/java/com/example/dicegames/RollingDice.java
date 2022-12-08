@@ -46,6 +46,27 @@ public class RollingDice extends Activity {
         sides = fromRollDataIntent.getIntExtra("sides", sides);
         cheat = fromRollDataIntent.getIntExtra("cheat", cheat);
 
+        //Media Player Things
+        MediaPlayer rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);
+        MediaPlayer no = MediaPlayer.create(this, R.raw.nooooo);
+        MediaPlayer cheatedD20 = MediaPlayer.create(this, R.raw.cheatd20);
+        MediaPlayer cheatedD6 = MediaPlayer.create(this, R.raw.cheatd6);
+        MediaPlayer d100 = MediaPlayer.create(this, R.raw.d100);
+        MediaPlayer d2 = MediaPlayer.create(this, R.raw.d2);
+        MediaPlayer d10r1 = MediaPlayer.create(this, R.raw.d10r1);
+        MediaPlayer d10r2 = MediaPlayer.create(this, R.raw.d10r2);
+        MediaPlayer d10r3 = MediaPlayer.create(this, R.raw.d10r3);
+        MediaPlayer d12r2 = MediaPlayer.create(this, R.raw.d12r2);
+        MediaPlayer d12r3 = MediaPlayer.create(this, R.raw.d12r3);
+        MediaPlayer d20_roll1 = MediaPlayer.create(this, R.raw.d20_roll1);
+        MediaPlayer d20_roll2 = MediaPlayer.create(this, R.raw.d20_roll2);
+        MediaPlayer d20_roll3 = MediaPlayer.create(this, R.raw.d20_roll3);
+        MediaPlayer d4r2 = MediaPlayer.create(this, R.raw.d4r2);
+        MediaPlayer d6r1 = MediaPlayer.create(this, R.raw.d6r1);
+        MediaPlayer d6r2 = MediaPlayer.create(this, R.raw.d6r2);
+        MediaPlayer d8r1 = MediaPlayer.create(this, R.raw.d8r1);
+        MediaPlayer d8r2 = MediaPlayer.create(this, R.raw.d8r2);
+
         //sensor things
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensorEventListener = new ShakeListener();
@@ -61,13 +82,53 @@ public class RollingDice extends Activity {
         }
 
         //button listeners
-        toRollingDataButton.setOnClickListener(view -> {
-            finish();
-        });
+        toRollingDataButton.setOnClickListener(view -> finish());
 
         rollButton.setOnClickListener(view -> {
-            String rolledNum = String.valueOf(die.roll());
-            rollButton.setText(rolledNum);
+            int rolledNum = die.roll();
+            String rolledNumString = String.valueOf(rolledNum);
+
+            if(sides == 6 && rolledNum == 6 && cheat > 0){
+                cheatedD20.start();
+            }
+            else if(rolledNum == sides && cheat > 0){
+                cheatedD20.start();
+            }
+            else if(sides < 3){
+                d2.start();
+            }
+            else if(sides < 5){
+                d4r2.start();
+            }
+            else if(sides < 7){
+                if((int) (Math.random() * 2) == 2){d6r1.start();}
+                else{d6r2.start();}
+            }
+            else if(sides < 9){
+                if((int) (Math.random() * 2) == 2){d8r1.start();}
+                else{d8r2.start();}
+            }
+            else if(sides < 11){
+                int miniRNG = (int) (Math.random() * 3);
+                if(miniRNG == 3){d10r1.start();}
+                else if(miniRNG == 2){d10r3.start();}
+                else{d10r2.start();}
+            }
+            else if(sides < 19){
+                if((int) (Math.random() * 2) == 2){d12r2.start();}
+                else{d12r3.start();}
+            }
+            else if(sides < 21){
+                int miniRNG = (int) (Math.random() * 4);
+                if(miniRNG == 4){d20_roll1.start();}
+                else if(miniRNG == 3){d20_roll2.start();}
+                else if(miniRNG == 2){rockAndRoll.start();}
+                else{d20_roll3.start();}
+            }
+            else{
+                d100.start();
+            }
+            rollButton.setText(rolledNumString);
         });
     }
 
@@ -104,9 +165,50 @@ public class RollingDice extends Activity {
             float deltaZAcc = Math.abs(zAcc - prevZAcc);
 
             if (deltaXAcc > SHAKE_THRESHOLD || deltaYAcc > SHAKE_THRESHOLD || deltaZAcc > SHAKE_THRESHOLD) {
-                if (!shaking) {
-                    String rolledNum = String.valueOf(die.roll());
-                    rollButton.setText(rolledNum);
+                if (!shaking) {int rolledNum = die.roll();
+                    String rolledNumString = String.valueOf(rolledNum);
+
+                    if(sides == 6 && rolledNum == 6 && cheat > 0){
+                        cheatedD20.start();
+                    }
+                    else if(rolledNum == sides && cheat > 0){
+                        cheatedD20.start();
+                    }
+                    else if(sides < 3){
+                        d2.start();
+                    }
+                    else if(sides < 5){
+                        d4r2.start();
+                    }
+                    else if(sides < 7){
+                        if((int) (Math.random() * 2) == 2){d6r1.start();}
+                        else{d6r2.start();}
+                    }
+                    else if(sides < 9){
+                        if((int) (Math.random() * 2) == 2){d8r1.start();}
+                        else{d8r2.start();}
+                    }
+                    else if(sides < 11){
+                        int miniRNG = (int) (Math.random() * 3);
+                        if(miniRNG == 3){d10r1.start();}
+                        else if(miniRNG == 2){d10r3.start();}
+                        else{d10r2.start();}
+                    }
+                    else if(sides < 19){
+                        if((int) (Math.random() * 2) == 2){d12r2.start();}
+                        else{d12r3.start();}
+                    }
+                    else if(sides < 21){
+                        int miniRNG = (int) (Math.random() * 4);
+                        if(miniRNG == 4){d20_roll1.start();}
+                        else if(miniRNG == 3){d20_roll2.start();}
+                        else if(miniRNG == 2){rockAndRoll.start();}
+                        else{d20_roll3.start();}
+                    }
+                    else{
+                        d100.start();
+                    }
+                    rollButton.setText(rolledNumString);
                     shaking = true;
                     atRest = false;
                 }
