@@ -9,6 +9,7 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RollingDice extends Activity {
@@ -47,7 +48,12 @@ public class RollingDice extends Activity {
         //intent from the roll data
         Intent fromRollDataIntent = getIntent();
         sides = fromRollDataIntent.getIntExtra("sides", sides);
+        String sidesString = sides+" Sides";
         cheat = fromRollDataIntent.getIntExtra("cheat", cheat);
+
+        //Text Views
+        TextView sidesAmount = findViewById(R.id.sides_amount);
+        sidesAmount.setText(sidesString);
 
         //Media Player Things
         rockAndRoll = MediaPlayer.create(this, R.raw.rock_and_roll);

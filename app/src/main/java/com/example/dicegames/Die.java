@@ -2,11 +2,11 @@ package com.example.dicegames;
 
 public class Die {
 
-    private int sides;
-    private int cheating;
+    private final int sides;
+    private final int cheating;
 
     //constructors
-    public Die(){
+    public Die() {
         this.sides = 6;
         this.cheating = 0;
     }
@@ -17,37 +17,17 @@ public class Die {
     }
 
     //methods
-    public int roll(){
+    public int roll() {
         //the number
-        if(cheating != 0){
+        if (cheating != 0) {
             int cheatRolledNum = (int) (Math.random() * 101);
             if (cheatRolledNum <= cheating) {
                 return sides;
-            }
-            else{
+            } else {
                 return (int) (Math.random() * sides - 1) + 1;
             }
-        }
-        else{
+        } else {
             return (int) (Math.random() * sides) + 1;
         }
-    }
-
-    //setters
-    public void setSides(int sides) {
-        this.sides = sides;
-    }
-
-    public void setCheating(int cheating) {
-        this.cheating = cheating;
-    }
-
-    //getters
-    public int getSides() {
-        return sides;
-    }
-
-    public int getCheating() {
-        return cheating;
     }
 }
