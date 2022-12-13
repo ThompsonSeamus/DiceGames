@@ -183,6 +183,7 @@ public class RollingDice extends Activity {
 
     class ShakeListener implements SensorEventListener {
         private static final int SHAKE_THRESHOLD = 5;
+        private static final double SHAKE_STOP = .85;
 
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
@@ -211,7 +212,7 @@ public class RollingDice extends Activity {
                     shaking = true;
                     atRest = false;
                 }
-            } else if (deltaXAcc <= .5 && deltaYAcc <= .5 && deltaZAcc <= .5) {
+            } else if (deltaXAcc <= SHAKE_STOP && deltaYAcc <= SHAKE_STOP && deltaZAcc <= SHAKE_STOP) {
                 if (atRest && shaking) {
                     shaking = false;
                 }
